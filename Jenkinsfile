@@ -26,13 +26,7 @@ pipeline {
             }
         }
 
-        stage('Deploy') {
-            steps {
-                echo 'Deploying application...'
-                // Example: copy WAR file to Tomcat webapps folder
-                sh 'cp target/*.war /opt/tomcat9/webapps/'
-            }
-        }
+   
     }
 }
 
