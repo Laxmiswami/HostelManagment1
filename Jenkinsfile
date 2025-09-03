@@ -2,9 +2,15 @@ pipeline {
     agent any
 
     tools {
-        maven 'MAVEN_HOME'   // Make sure Maven is set in Jenkins Global Tool Configuration
+        maven 'MAVEN_HOME'   // Make sure Maven is configured in Jenkins Global Tool Configuration
     }
 
+    stages {
+        stage('Checkout') {
+            steps {
+                git 'https://github.com/Laxmiswami/HostelManagment1.git'
+            }
+        }
 
         stage('Build') {
             steps {
@@ -23,7 +29,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploying application...'
-                // Example: copy WAR file to Tomcat (adjust path as per your server)
+                // Example: copy WAR file to Tomcat webapps folder
                 sh 'cp target/*.war /opt/tomcat9/webapps/'
             }
         }
